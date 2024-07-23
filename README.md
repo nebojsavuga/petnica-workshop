@@ -70,6 +70,13 @@ Metamask is essential for following this workshop. Please ensure it is installed
 
 ## Welcome to the Workshop!
 
+Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will explore the fundamentals of Ethereum, including the basics of smart contracts and how they work. You’ll gain practical insights into Ethereum’s core concepts and get hands-on experience by writing your first smart contracts.
+
 ## Best Practices
 
+- **Follow along with me in live coding sessions**: Actively participate during the live coding sessions. This hands-on approach will help you understand the concepts better and clarify any doubts in real-time.
+- **Ask whenever something is not clear**: If something’s confusing, just ask! No question is too basic, and it's better to get clarity right away.
+- **Google it or ChatGPT it**: Stuck on something? Hit up Google or ask ChatGPT.
+
 <p align="right">(<a href="#table-of-contents">back to top</a>) ⬆️</p>
+
