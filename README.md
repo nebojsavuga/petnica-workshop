@@ -5,9 +5,8 @@
 # Table of Contents
 
 <details>
-<summary>Resources</summary>
+<summary><a href="#resources">Resources</a></summary>
  <ul>
-    <li><a href="#resources-for-this-workshop">Resources For This Workshop</a></li>
     <li><a href="#key-resources">Key Resources</a></li>
     <li><a href="#development-tools">Development Tools</a></li>
     <li><a href="#faucets">Faucets</a></li>
@@ -24,11 +23,18 @@
 </ol>
 </details>
 
+<details>
+<summary><a href="#section-1-ethereum-basics">Section 1: Ethereum Basics!</a></summary>
+<ol>
+  <li><a href="#what-is-ethereum">What is Ethereum?</a></li>
+</ol>
+</details>
+
 ## Disclaimer
 
 > ⚠️ All code associated with this course is for demo purposes only. They have not been audited and should not be considered production ready. Please use at your own risk.
 
-# Resources For This Workshop
+# Resources
 
 # Key Resources
 
@@ -79,4 +85,13 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
 - **Google it or ChatGPT it**: Stuck on something? Hit up Google or ask ChatGPT.
 
 <p align="right">(<a href="#table-of-contents">back to top</a>) ⬆️</p>
+
+
+# Section 1: Ethereum Basics
+
+## What is Ethereum?
+
+## Ethereum accounts
+
+## What is smart contract?
 
