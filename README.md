@@ -31,10 +31,31 @@
 </details>
 
 <details>
-<summary><a href="#section-2-your-first-smart-contract">Section 2: Your first smart contract!</a></summary>
-<ol>
-  <li><a href="#welcome-to-remix">Welcome to Remix</a></li>
-</ol>
+  <summary><a href="#section-2-hello-world">Section 2: Hello World</a></summary>
+  <ol>
+    <li><a href="#welcome-to-remix">Welcome to Remix</a></li>
+    <li>
+      <a href="#hello-world">Hello world</a>
+      <ol>
+        <li><a href="#deploying-your-first-contract">Deploying your first contract</a></li>
+      </ol>
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary><a href="#section-3-vending-machine-contract">Section 3: Vending Machine Contract</a></summary>
+  <ol>
+    <li><a href="#vending-machine-contract">Vending machine contract</a>
+      <ol>
+        <li><a href="#basic-solidity-types">Basic Solidity: Types</a></li>
+        <li><a href="#basic-solidity-function">Basic Solidity: Function</a></li>
+        <li><a href="#basic-solidity-arrays--structs">Basic Solidity: Arrays & Structs</a></li>
+        <li><a href="#basic-solidity-compiler-errors-and-warnings">Basic Solidity: Compiler Errors and Warnings</a></li>
+        <li><a href="#basic-solidity-memory-storage-calldata-intro">Basic Solidity: Memory, Storage, Calldata (Intro)</a></li>
+      </ol>
+    </li>
+  </ol>
 </details>
 
 ## Disclaimer
@@ -128,10 +149,79 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
 - **Characteristics**:
   - **Immutable**: Once deployed, the code cannot change.
   - **Deterministic**: Execution outcome is consistent for everyone, given the same transaction context and blockchain state.
+  - **Decentralized**: Operate on the decentralized network, meaning they are executed across multiple nodes, ensuring trustless and transparent operation without a central authority.
 
 Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/watch?v=pWGLtjG-F5c)
 
 # Section 2: Your first smart contract
 
+### Add code here
+
+---
+
 ## Welcome to Remix
-Hello world example, intro to bytecode, compilation, abi etc..
+
+- [Remix](http://remix.ethereum.org)
+
+## Hello world
+
+- Versioning
+- Take notes in your code!
+- [What is a software license](https://snyk.io/learn/what-is-a-software-license/)
+- SPDX License
+- Compiling
+- Contract Declaration
+
+## Deploying your First Contract
+
+- A testnet or mainnet
+- Connecting Metamask
+- [Find faucets here!](#faucets)
+- See the faucets at the top of this README!
+- Interacting with Deployed Contracts
+
+<p align="right">(<a href="#table-of-contents">back to top</a>) ⬆️</p>
+
+# Section 2: Vending machine contract
+
+### Add code here
+
+---
+
+## Basic Solidity: Types
+
+- [Types & Declaring Variables](https://docs.soliditylang.org/en/v0.8.26/)
+  - `uint256`, `int256`, `bool`, `string`, `address`, `bytes32`
+  - [Solidity Types](https://docs.soliditylang.org/en/latest/types.html)
+  - [Bits and Bytes](https://www.youtube.com/watch?v=Dnd28lQHquU)
+- Default Initializations
+- Comments
+
+## Basic Solidity: Function
+
+- [Visibility](https://docs.soliditylang.org/en/latest/contracts.html#visibility-and-getters)
+- Function Selector
+- View & Pure Functions
+
+## Basic Solidity: Arrays & Structs
+
+- Structs
+- Intro to Storage
+- Arrays
+- Dynamic & Fixed Sized
+- `push` array function
+
+## Basic Solidity: Compiler Errors and Warnings
+
+- Yellow: Warnings are Ok
+- Red: Errors are not Ok
+
+## Basic Solidity: Memory, Storage, Calldata (Intro)
+
+- 6 Places you can store and access data
+  - calldata
+  - memory
+  - storage
+  - code
+  - logs
+  - stack
