@@ -53,6 +53,15 @@
         <li><a href="#basic-solidity-arrays--structs">Basic Solidity: Arrays & Structs</a></li>
         <li><a href="#basic-solidity-compiler-errors-and-warnings">Basic Solidity: Compiler Errors and Warnings</a></li>
         <li><a href="#basic-solidity-memory-storage-calldata-intro">Basic Solidity: Memory, Storage, Calldata (Intro)</a></li>
+        <li><a href="#basic-solidity-modifiers">Basic Solidity: Modifiers</a></li>
+        <li><a href="#basic-solidity-custom-errors">Basic Solidity: Custom Errors</a></li>
+        <li><a href="#receiving-eth-through-a-function">Receiving ETH through a function</a>
+          <ol>
+            <li><a href="#receive-fallback-functions">Receive & Fallback Functions</a></li>
+            <li><a href="#immutable-constant">Immutable & Constant</a></li>
+          </ol>
+        </li>
+        <li><a href="#sending-eth-through-a-function">Sending ETH through a function</a></li>
       </ol>
     </li>
   </ol>
@@ -182,7 +191,7 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
 
 <p align="right">(<a href="#table-of-contents">back to top</a>) ⬆️</p>
 
-# Section 2: Vending machine contract
+# Section 3: Vending machine contract
 
 ### Add code here
 
@@ -225,3 +234,18 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
   - code
   - logs
   - stack
+
+## Basic Solidity: Modifiers
+
+## Basic Solidity: Custom errors
+
+## Receiving ETH through a function
+
+### Receive & Fallback Functions
+
+### Immutable & Constant
+
+## Sending ETH through a function
+- Transfer, Send, and Call
+
+
