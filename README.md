@@ -27,6 +27,8 @@
 <summary><a href="#section-1-ethereum-basics">Section 1: Ethereum Basics!</a></summary>
 <ol>
   <li><a href="#what-is-ethereum">What is Ethereum?</a></li>
+  <li><a href="#ethereum-accounts">Ethereum accounts</a></li>
+  <li><a href="#what-is-a-smart-contract">What is a smart contract?</a></li>
 </ol>
 </details>
 
@@ -67,6 +69,16 @@
   </ol>
 </details>
 
+<details>
+<summary><a href="#section-4-vending-machine-factory">Section 4: Vending Machine Factory</a></summary>
+<ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#basic-solidity-importing-contracts-into-other-contracts">Basic Solidity: Importing Contracts into other Contracts</a></li>
+    <li><a href="#basic-solidity-interacting-with-other-contracts">Basic Solidity: Interacting with other Contracts</a></li>
+    <li><a href="#basic-solidity-inheritance--overrides">Basic Solidity: Inheritance &amp; Overrides</a></li>
+    <li><a href="#recap">Recap</a></li>
+  </ol>
+</details
 ## Disclaimer
 
 > ⚠️ All code associated with this course is for demo purposes only. They have not been audited and should not be considered production ready. Please use at your own risk.
@@ -246,6 +258,38 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
 ### Immutable & Constant
 
 ## Sending ETH through a function
+
 - Transfer, Send, and Call
 
+## Improved vending machine
 
+Gas matters :)
+
+### Storage
+
+- Layout
+- Struct packing
+
+# Section 4: Vending machine factory
+
+## Introduction
+
+- [Factory Pattern](https://betterprogramming.pub/learn-solidity-the-factory-pattern-75d11c3e7d29)
+
+## Basic Solidity: Importing Contracts into other Contracts
+
+- [Composibility](https://chain.link/techtalks/defi-composability)
+- [Solidity new keyword](https://docs.soliditylang.org/en/latest/control-structures.html?highlight=new#creating-contracts-via-new)
+- [Importing Code in solidity](https://solidity-by-example.org/import)
+
+## Basic Solidity: Interacting with other Contracts
+
+- To interact, you always need: ABI + Address
+- [ABI](https://docs.soliditylang.org/en/latest/abi-spec.html?highlight=abi)
+
+## Basic Solidity: Inheritance & Overrides
+
+- [Inheritance](https://solidity-by-example.org/inheritance)
+- [Override & Virtual Keyword](https://docs.soliditylang.org/en/latest/contracts.html?highlight=override#function-overriding)
+
+## Recap
