@@ -5,8 +5,8 @@
 # Table of Contents
 
 <details>
-<summary><a href="#resources">Resources</a></summary>
- <ul>
+  <summary><a href="#resources">Resources</a></summary>
+  <ul>
     <li><a href="#key-resources">Key Resources</a></li>
     <li><a href="#development-tools">Development Tools</a></li>
     <li><a href="#faucets">Faucets</a></li>
@@ -14,22 +14,24 @@
     <li><a href="#metamask-installation">Metamask Installation</a></li>
   </ul>
 </details>
+<hr style="border: 1px dashed #ccc;">
+<p style="text-align: right; font-weight: bold;">⬇️ Day 1 ⬇️</p>
 
 <details>
-<summary><a href="#section-0-welcome-to-the-workshop">Section 0: Welcome to the Workshop!</a></summary>
-<ol>
-  <li><a href="#welcome-to-the-workshop">Welcome to the Workshop!</a></li>
-  <li><a href="#best-practices">Best Practices</a></li>
-</ol>
+  <summary><a href="#section-0-welcome-to-the-workshop">Section 0: Welcome to the Workshop!</a></summary>
+  <ol>
+    <li><a href="#welcome-to-the-workshop">Welcome to the Workshop!</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+  </ol>
 </details>
 
 <details>
-<summary><a href="#section-1-ethereum-basics">Section 1: Ethereum Basics!</a></summary>
-<ol>
-  <li><a href="#what-is-ethereum">What is Ethereum?</a></li>
-  <li><a href="#ethereum-accounts">Ethereum accounts</a></li>
-  <li><a href="#what-is-a-smart-contract">What is a smart contract?</a></li>
-</ol>
+  <summary><a href="#section-1-ethereum-basics">Section 1: Ethereum Basics!</a></summary>
+  <ol>
+    <li><a href="#what-is-ethereum">What is Ethereum?</a></li>
+    <li><a href="#ethereum-accounts">Ethereum accounts</a></li>
+    <li><a href="#what-is-a-smart-contract">What is a smart contract?</a></li>
+  </ol>
 </details>
 
 <details>
@@ -70,15 +72,54 @@
 </details>
 
 <details>
-<summary><a href="#section-4-vending-machine-factory">Section 4: Vending Machine Factory</a></summary>
-<ol>
+  <summary><a href="#section-4-vending-machine-factory">Section 4: Vending Machine Factory</a></summary>
+  <ol>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#basic-solidity-importing-contracts-into-other-contracts">Basic Solidity: Importing Contracts into other Contracts</a></li>
     <li><a href="#basic-solidity-interacting-with-other-contracts">Basic Solidity: Interacting with other Contracts</a></li>
     <li><a href="#basic-solidity-inheritance--overrides">Basic Solidity: Inheritance &amp; Overrides</a></li>
     <li><a href="#recap">Recap</a></li>
   </ol>
-</details
+</details>
+
+<hr style="border: 1px dashed #ccc;">
+<p style="text-align: right; font-weight: bold;">⬇️ Day 2 ⬇️</p>
+
+<details>
+  <summary><a href="#section-5-introduction-to-defi">Section 5: Introduction to DeFi</a></summary>
+  <ol>
+    <li><a href="#what-is-defi">What is DeFi?</a></li>
+    <li>
+      <a href="#dex-vs-cex">DEX vs CEX</a>
+      <ol>
+        <li><a href="#intro-to-amms">Intro to AMMs</a></li>
+        <li><a href="#uniswap">Uniswap</a></li>
+      </ol>
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary><a href="#section-6-uniswap-v1-introduction">Section 6: Uniswap V1 Introduction</a></summary>
+  <ol>
+    <li><a href="#what-is-erc20">What is ERC20?</a></li>
+    <li>
+      <a href="#coding-first-erc20">Coding first ERC20</a>
+      <ol>
+        <li><a href="#openzeppelin">OpenZeppelin</a></li>
+      </ol>
+    </li>
+  </ol>
+</details>
+
+<details>
+  <summary><a href="#section-7-uniswapv1-exchange-contract">Section 7: UniswapV1 Exchange Contract</a></summary>
+</details>
+
+<details>
+  <summary><a href="#section-8-uniswapv1-factory-contract">Section 8: UniswapV1 Factory Contract</a></summary>
+</details>
+
 ## Disclaimer
 
 > ⚠️ All code associated with this course is for demo purposes only. They have not been audited and should not be considered production ready. Please use at your own risk.
@@ -293,3 +334,24 @@ Gas matters :)
 - [Override & Virtual Keyword](https://docs.soliditylang.org/en/latest/contracts.html?highlight=override#function-overriding)
 
 ## Recap
+
+# Section 5: Introduction to DeFi
+
+## What is DeFi?
+
+## DEX vs CEX
+
+- Intro to AMMs
+- Uniswap
+
+# Section 6: Uniswap V1 introduction
+
+## What is ERC20?
+
+## Coding first ERC20
+
+- OpenZeppelin
+
+# Section 7: UniswapV1 Exchange contract
+
+# Section 8: UniswapV1 Factory contract
