@@ -262,15 +262,17 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
 ## Basic Solidity: Function
 
 - [Visibility](https://docs.soliditylang.org/en/latest/contracts.html#visibility-and-getters)
-- Function Selector
+- [Function Selector](https://www.evm-function-selector.click)
 - View & Pure Functions
+
+## Immutable & Constant
 
 ## Basic Solidity: Arrays & Structs
 
-- Structs
+- [Structs](https://docs.soliditylang.org/en/latest/structure-of-a-contract.html#struct-types)
 - Intro to Storage
 - Arrays
-- Dynamic & Fixed Sized
+- [Dynamic & Fixed Sized](https://docs.soliditylang.org/en/latest/types.html#arrays)
 - `push` array function
 
 ## Basic Solidity: Compiler Errors and Warnings
@@ -289,18 +291,25 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
   - stack
 
 ## Basic Solidity: Modifiers
+- [Modifiers](https://docs.soliditylang.org/en/latest/contracts.html#function-modifiers)
 
-## Basic Solidity: Custom errors
 
+
+## Basic Solidity: Error handling
+- [Errors](https://docs.soliditylang.org/en/latest/abi-spec.html#errors)
+- [`require`](https://docs.soliditylang.org/en/latest/control-structures.html#panic-via-assert-and-error-via-require)
+- `assert`
 ## Receiving ETH through a function
+- [Special functions](https://docs.soliditylang.org/en/latest/contracts.html#special-functions)
+- [`falback`](https://solidity-by-example.org/fallback/)
+- [`receive`](https://docs.soliditylang.org/en/latest/contracts.html#receive-ether-function)
 
-### Receive & Fallback Functions
 
-### Immutable & Constant
 
 ## Sending ETH through a function
 
 - Transfer, Send, and Call
+- `payable`
 
 ## Improved vending machine
 
