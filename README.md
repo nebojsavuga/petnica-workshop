@@ -348,6 +348,8 @@ Gas matters :)
 
 ## What is DeFi?
 
+Watch finematic video..
+
 ## DEX vs CEX
 
 - Intro to AMMs
@@ -356,6 +358,7 @@ Gas matters :)
 # Section 6: Uniswap V1 introduction
 
 ## What is ERC20?
+- What is EIP?
 
 ## Coding first ERC20
 
