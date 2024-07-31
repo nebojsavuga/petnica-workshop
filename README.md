@@ -184,9 +184,11 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
 - 📄 [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/)
   - 👤 [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin)
 - 🌐 The world computer
-- 🖥️ State machine
-- 🔄 Ethereum and Turing Completeness
-- 💰 Ether
+  - [Ethereum: the World Computer]((https://www.youtube.com/watch?v=j23HnORQXvs))
+  - ["Ethereum - The World's Computer" - Gavin Wood](https://www.youtube.com/watch?v=8OLAcUPHuW0)
+- 🖥️ [State machine](https://ethereum.org/en/developers/docs/evm/)
+- 🔄 [Ethereum and Turing Completeness](https://mirror.xyz/skyf4ll.eth/l24iNVL6sZF7CYn-wgP1Un2tBhoBvSb3YKgW6IZPGt0)
+- 💰 [Ether](https://ethereum.org/en/developers/docs/gas/)
 
 ## Ethereum Accounts
 
@@ -205,8 +207,8 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
 - **Fundamental building blocks**: Essential component of Ethereum's application layer.
 - **Term coined by Nick Szabo**:
 
-  - 1994: Introduced the concept.
-  - 1996: Explored potential uses.
+  - 1994: Introduced the [concept](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart.contracts.html).
+  - 1996: Explored potential [uses](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart_contracts_2.html).
 
 - **Characteristics**:
   - **Immutable**: Once deployed, the code cannot change.
@@ -217,7 +219,20 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
 
 # Section 2: Your first smart contract
 
-### Add code here
+### 
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.26;
+
+contract HelloWorld {
+    string public greet = "HelloWorld";
+
+    function setGreet(string calldata newGreet) external {
+        greet = newGreet;
+    }
+}
+```
+[Open in Remix](https://remix.ethereum.org/?#code=Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IE1JVA0KcHJhZ21hIHNvbGlkaXR5IDAuOC4yNjsNCg0KY29udHJhY3QgSGVsbG9Xb3JsZCB7DQogICAgc3RyaW5nIHB1YmxpYyBncmVldCA9ICJIZWxsb1dvcmxkIjsNCg0KICAgIGZ1bmN0aW9uIHNldEdyZWV0KHN0cmluZyBjYWxsZGF0YSBuZXdHcmVldCkgZXh0ZXJuYWwgew0KICAgICAgICBncmVldCA9IG5ld0dyZWV0Ow0KICAgIH0NCn0&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.26+commit.8a97fa7a.js)
 
 ---
 
@@ -226,13 +241,13 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
 - [Remix](http://remix.ethereum.org)
 
 ## Hello world
-
+- [Solidity in 100s](https://www.youtube.com/watch?v=kdvVwGrV7ec)
 - Versioning
 - Take notes in your code!
 - [What is a software license](https://snyk.io/learn/what-is-a-software-license/)
 - SPDX License
-- Compiling
 - Contract Declaration
+- Compiling
 
 ## Deploying your First Contract
 
