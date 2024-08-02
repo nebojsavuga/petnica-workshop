@@ -184,9 +184,17 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
 - 📄 [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/)
   - 👤 [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin)
 - 🌐 The world computer
+   - **Characteristics**:
+      - **Slow**
+      - **Expensive**
+      - **Not decisive** 
+      - **Global Singleton**(one computer for entire planet now and forever)
+      - **Unstoppable**
+      - **Natively multi-user**
+      - **Atomicity**
   - [Ethereum: the World Computer]((https://www.youtube.com/watch?v=j23HnORQXvs))
   - ["Ethereum - The World's Computer" - Gavin Wood](https://www.youtube.com/watch?v=8OLAcUPHuW0)
-- 🖥️ [State machine](https://ethereum.org/en/developers/docs/evm/)
+- 🖥️ [Transaction-Based State machine](https://ethereum.org/en/developers/docs/evm/)
 - 🔄 [Ethereum and Turing Completeness](https://mirror.xyz/skyf4ll.eth/l24iNVL6sZF7CYn-wgP1Un2tBhoBvSb3YKgW6IZPGt0)
 - 💰 [Ether](https://ethereum.org/en/developers/docs/gas/)
 
@@ -211,7 +219,7 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
   - 1996: Explored potential [uses](https://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart_contracts_2.html).
 
 - **Characteristics**:
-  - **Immutable**: Once deployed, the code cannot change.
+  - **Immutable**: Once deployed, the code cannot change. ([bugs bite](https://medium.com/@solidity101/hacks-on-the-rise-over-1-19-billion-lost-in-2024-d1eec77e1169))
   - **Deterministic**: Execution outcome is consistent for everyone, given the same transaction context and blockchain state.
   - **Decentralized**: Operate on the decentralized network, meaning they are executed across multiple nodes, ensuring trustless and transparent operation without a central authority.
 
