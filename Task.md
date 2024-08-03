@@ -2,7 +2,8 @@
 
 ## Background
 
-Support Children is a non-profit, international organization dedicated to improving the lives of children worldwide. Recognizing the potential of cryptocurrency donations, they have decided to integrate this innovative approach into their fundraising efforts. You have been hired to develop the smart contract for organization.
+Support Children is a non-profit, international organization dedicated to improving the lives of children worldwide. Recognizing the potential of cryptocurrency donations, they have decided to integrate this innovative approach into their fundraising efforts. You have been hired to develop the smart contract for organization. 
+**Inspired by [3327](https://3327.io)**
 
 ## Objective
 
@@ -115,5 +116,3 @@ For an advanced version, the contract can be modified to allow users to send any
 To achieve this, you can use the Uniswap router to perform token swaps. This feature will make it easier for donors to contribute using any token they have, without worrying about the specific token the campaign requires.
 
 ---
-
-**Inspired by [3327](https://3327.io)**
