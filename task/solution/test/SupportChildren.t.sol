@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
-import {SupportChildren, ISupportChildren} from "../src/SupportChildren.sol";
+import {SupportChildren, ISupportChildren, IERC721, IERC20} from "../src/SupportChildren.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 contract SupportChildrenTest is Test {
@@ -11,7 +11,10 @@ contract SupportChildrenTest is Test {
         supportChildren = new SupportChildren();
     }
 
-    function testCreateCampaign() external {
+    /*//////////////////////////////////////////////////////////////
+                            CREATE CAMPAIGN
+    //////////////////////////////////////////////////////////////*/
+    function test_CreateCampaign() external {
         supportChildren.createCampaign(
             payable(address(this)),
             block.timestamp + 1 days,
@@ -48,7 +51,7 @@ contract SupportChildrenTest is Test {
         assertEq(campaign.receivedAmount, 0);
         assertEq(campaign.campaignId, 1);
     }
-    function testCreateCampaignShouldEmitCampaignCreated() external {
+    function test_CreateCampaignShouldEmitCampaignCreated() external {
         vm.expectEmit(true, true, true, true, address(supportChildren));
         emit ISupportChildren.CampaignCreated(
             0,
@@ -71,7 +74,7 @@ contract SupportChildrenTest is Test {
             1
         );
     }
-    function testCreateCampaignAddressZero() external {
+    function test_CreateCampaignAddressZero() external {
         vm.expectRevert(ISupportChildren.SupportChildren__AddressZero.selector);
         supportChildren.createCampaign(
             payable(address(0)),
@@ -81,7 +84,7 @@ contract SupportChildrenTest is Test {
             1
         );
     }
-    function testCreateCampaignMustEndInFuture() external {
+    function test_CreateCampaignMustEndInFuture() external {
         vm.warp(block.timestamp + 1 days);
         vm.expectRevert(
             ISupportChildren.SupportChildren__CampaignMustEndInFuture.selector
@@ -94,7 +97,7 @@ contract SupportChildrenTest is Test {
             1
         );
     }
-    function testCreateCampaignCapMustBeGreaterThanZero() external {
+    function test_CreateCampaignCapMustBeGreaterThanZero() external {
         vm.expectRevert(
             ISupportChildren.SupportChildren__CapMustBeGreaterThanZero.selector
         );
@@ -106,4 +109,123 @@ contract SupportChildrenTest is Test {
             0
         );
     }
+
+    /*//////////////////////////////////////////////////////////////
+                               DONATE ETH
+    //////////////////////////////////////////////////////////////*/
+    function test_DonateEth() external {
+        address payable receiver = payable(makeAddr("beneficiary"));
+        uint256 balanceBefore = IERC721(supportChildren.nftReward()).balanceOf(
+            receiver
+        );
+        supportChildren.createCampaign(
+            receiver,
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            1 ether
+        );
+
+        vm.deal(receiver, 1 ether);
+        vm.prank(receiver);
+        supportChildren.donateETH{value: 1 ether}(0);
+
+        uint256 balanceAfter = IERC721(supportChildren.nftReward()).balanceOf(
+            receiver
+        );
+
+        ISupportChildren.Campaign memory campaign = supportChildren.getCampaign(
+            0
+        );
+        assertEq(campaign.receivedAmount, 1 ether);
+        assertEq(balanceAfter, balanceBefore + 1);
+    }
+    function test_DonateEthMintsOnlyOneNFTPerCampaign() external {
+        address payable receiver = payable(makeAddr("beneficiary"));
+        uint256 balanceBefore = IERC721(supportChildren.nftReward()).balanceOf(
+            receiver
+        );
+        supportChildren.createCampaign(
+            receiver,
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            2 ether
+        );
+
+        vm.deal(receiver, 2 ether);
+
+        vm.startPrank(receiver);
+        supportChildren.donateETH{value: 1 ether}(0);
+        supportChildren.donateETH{value: 1 ether}(0);
+        vm.stopPrank();
+
+        uint256 balanceAfter = IERC721(supportChildren.nftReward()).balanceOf(
+            receiver
+        );
+
+        ISupportChildren.Campaign memory campaign = supportChildren.getCampaign(
+            0
+        );
+        assertEq(campaign.receivedAmount, 2 ether);
+        assertEq(balanceAfter, balanceBefore + 1);
+    }
+    function test_DonateEthCampaignNotActive() external {
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__CampaignNotActive.selector
+        );
+        supportChildren.donateETH{value: 1 ether}(0);
+    }
+    function test_DonateEthCampaignWantTokenIsNotEth() external {
+        supportChildren.createCampaign(
+            payable(address(this)),
+            block.timestamp + 1 days,
+            "uri",
+            makeAddr("tokenAddress"),
+            1
+        );
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__CampaignWantTokenIsNotETH.selector
+        );
+        supportChildren.donateETH{value: 1 ether}(0);
+    }
+    function test_DonateEthCampaignCapIsReached() external {
+        supportChildren.createCampaign(
+            payable(makeAddr("beneficiary")),
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            1 ether
+        );
+        supportChildren.donateETH{value: 1 ether}(0);
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__CampaignCapIsReached.selector
+        );
+        supportChildren.donateETH{value: 1 ether}(0);
+    }
+    function test_DonateEthEthAmountMustBeGreaterThanZero() external {
+        vm.expectRevert(
+            ISupportChildren
+                .SupportChildren__EthAmountMustBeGreaterThanZero
+                .selector
+        );
+        supportChildren.donateETH{value: 0}(0);
+    }
+    function test_DonateEthFailedToSendEther() external {
+        supportChildren.createCampaign(
+            payable(address(this)),
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            1 ether
+        );
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__FailedToSendEther.selector
+        );
+        supportChildren.donateETH{value: 1 ether}(0);
+    }
+
+    /*//////////////////////////////////////////////////////////////
+                                 DONATE
+    //////////////////////////////////////////////////////////////*/
 }
