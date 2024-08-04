@@ -126,7 +126,7 @@ contract SupportChildren is ISupportChildren {
         uint256 _campaignId
     ) internal view returns (bool) {
         return
-            campaigns[_campaignId].endTimestamp > block.timestamp ||
+            campaigns[_campaignId].endTimestamp > block.timestamp &&
             campaigns[_campaignId].hardCap >
             campaigns[_campaignId].receivedAmount;
     }

@@ -202,11 +202,11 @@ contract SupportChildrenTest is Test {
             address(0),
             1 ether
         );
-        supportChildren.donateETH{value: 1 ether}(0);
+        supportChildren.donateETH{value: 0.5 ether}(0);
         vm.expectRevert(
             ISupportChildren.SupportChildren__CampaignCapIsReached.selector
         );
-        supportChildren.donateETH{value: 1 ether}(0);
+        supportChildren.donateETH{value: 0.6 ether}(0);
     }
     function test_DonateEthEthAmountMustBeGreaterThanZero() external {
         vm.expectRevert(
@@ -346,5 +346,37 @@ contract SupportChildrenTest is Test {
             ISupportChildren.SupportChildren__CampaignCapIsReached.selector
         );
         supportChildren.donate(0, makeAddr("tokenAddress"), 10);
+    }
+    /*//////////////////////////////////////////////////////////////
+                           IS CAMPAIGN ACTIVE
+    //////////////////////////////////////////////////////////////*/
+    function test_IsCampaignActive() external {
+        supportChildren.createCampaign(
+            payable(address(this)),
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            1
+        );
+        assert(supportChildren.isCampaignActive(0));
+
+        vm.warp(block.timestamp + 2 days);
+        assert(!supportChildren.isCampaignActive(0));
+
+        address receiver = makeAddr("beneficiary");
+        supportChildren.createCampaign(
+            payable(receiver),
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            1 ether
+        );
+        assert(supportChildren.isCampaignActive(1));
+
+        // after cap is reached campaign is not active
+        vm.deal(receiver, 1 ether);
+        vm.prank(receiver);
+        supportChildren.donateETH{value: 1 ether}(1);
+        assert(!supportChildren.isCampaignActive(1));
     }
 }
