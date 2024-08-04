@@ -6,7 +6,12 @@ import {IERC20} from "./interfaces/IERC20.sol";
 import {IERC721} from "./interfaces/IERC721.sol";
 import {ERC721Token} from "./ERC721Token.sol";
 
+/// @title SupportChildren
+/// @notice Contract for creating and donating to campaigns in ether or ERC20 tokens
 contract SupportChildren is ISupportChildren {
+    /*//////////////////////////////////////////////////////////////
+                            STATE VARIABLES
+    //////////////////////////////////////////////////////////////*/
     uint256 index; // @research, can this be more optimized?
     address public nftReward;
     mapping(uint256 campaignId => Campaign) campaigns;
@@ -16,18 +21,34 @@ contract SupportChildren is ISupportChildren {
         nftReward = address(new ERC721Token(address(this)));
     }
 
+    /*//////////////////////////////////////////////////////////////
+                           EXTERNAL FUNCTIONS
+    //////////////////////////////////////////////////////////////*/
+
+    /// @notice Check if a campaign is active
+    /// @param _campaignId The id of the campaign
+    /// @return bool True if the campaign is active, false otherwise
     function isCampaignActive(
         uint256 _campaignId
     ) external view returns (bool) {
         return _isCampaignActive(_campaignId);
     }
 
+    /// @notice Get a campaign
+    /// @param _campaignId The id of the campaign
+    /// @return Campaign The campaign
     function getCampaign(
         uint256 _campaignId
     ) external view returns (Campaign memory) {
         return campaigns[_campaignId];
     }
 
+    /// @notice Create a campaign
+    /// @param _beneficiary The address of the beneficiary
+    /// @param _endTimestamp The end timestamp of the campaign
+    /// @param uri The URI of the campaign
+    /// @param wantToken The address of the token the campaign wants
+    /// @param _hardCap The hard cap of the campaign
     function createCampaign(
         address payable _beneficiary,
         uint256 _endTimestamp,
@@ -54,6 +75,8 @@ contract SupportChildren is ISupportChildren {
         emit CampaignCreated(campaignId, campaign);
     }
 
+    /// @notice Donate ether to a campaign
+    /// @param _campaignId The id of the campaign
     function donateETH(uint256 _campaignId) external payable {
         if (msg.value == 0) {
             revert SupportChildren__EthAmountMustBeGreaterThanZero();
@@ -87,6 +110,10 @@ contract SupportChildren is ISupportChildren {
         emit Donation(_campaignId, msg.value, address(0));
     }
 
+    /// @notice Donate ERC20 token to a campaign
+    /// @param _campaignId The id of the campaign
+    /// @param _token The address of the token
+    /// @param _amount The amount of the token
     function donate(
         uint256 _campaignId,
         address _token,
@@ -122,6 +149,9 @@ contract SupportChildren is ISupportChildren {
         emit Donation(_campaignId, _amount, _token);
     }
 
+    /*//////////////////////////////////////////////////////////////
+                           INTERNAL FUNCTIONS
+    //////////////////////////////////////////////////////////////*/
     function _isCampaignActive(
         uint256 _campaignId
     ) internal view returns (bool) {
