@@ -7,7 +7,7 @@ import {IERC721} from "./interfaces/IERC721.sol";
 import {ERC721Token} from "./ERC721Token.sol";
 
 contract SupportChildren is ISupportChildren {
-    uint256 index;
+    uint256 index; // @research, can this be more optimized?
     address nftReward;
     mapping(uint256 campaignId => Campaign) campaigns;
     mapping(address receiver => mapping(uint256 campaignId => bool isNftRewardSent)) isNftRewardSent;
