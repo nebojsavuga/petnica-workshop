@@ -2,13 +2,16 @@
 pragma solidity 0.8.26;
 
 import {SupportChildren, ISupportChildren, IERC721, IERC20} from "../src/SupportChildren.sol";
+import {ERC20Token} from "../src/ERC20Token.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 contract SupportChildrenTest is Test {
     SupportChildren supportChildren;
+    ERC20Token testToken;
 
     function setUp() external {
         supportChildren = new SupportChildren();
+        testToken = new ERC20Token();
     }
 
     /*//////////////////////////////////////////////////////////////
@@ -115,6 +118,7 @@ contract SupportChildrenTest is Test {
     //////////////////////////////////////////////////////////////*/
     function test_DonateEth() external {
         address payable receiver = payable(makeAddr("beneficiary"));
+        uint256 etherBalanceBefore = receiver.balance;
         uint256 balanceBefore = IERC721(supportChildren.nftReward()).balanceOf(
             receiver
         );
@@ -139,6 +143,7 @@ contract SupportChildrenTest is Test {
         );
         assertEq(campaign.receivedAmount, 1 ether);
         assertEq(balanceAfter, balanceBefore + 1);
+        assertEq(receiver.balance, etherBalanceBefore + 1 ether);
     }
     function test_DonateEthMintsOnlyOneNFTPerCampaign() external {
         address payable receiver = payable(makeAddr("beneficiary"));
@@ -228,4 +233,118 @@ contract SupportChildrenTest is Test {
     /*//////////////////////////////////////////////////////////////
                                  DONATE
     //////////////////////////////////////////////////////////////*/
+    function test_donate() external {
+        address caller = makeAddr("caller");
+        address receiver = makeAddr("beneficiary");
+        testToken.mint(caller, 100);
+
+        vm.startPrank(caller);
+        testToken.approve(address(supportChildren), 100);
+
+        uint256 tokenBalanceBefore = testToken.balanceOf(receiver);
+        uint256 balanceBefore = IERC721(supportChildren.nftReward()).balanceOf(
+            payable(caller)
+        );
+        supportChildren.createCampaign(
+            payable(receiver),
+            block.timestamp + 1 days,
+            "uri",
+            address(testToken),
+            100
+        );
+
+        supportChildren.donate(0, address(testToken), 100);
+
+        vm.stopPrank();
+
+        uint256 balanceAfter = IERC721(supportChildren.nftReward()).balanceOf(
+            payable(caller)
+        );
+
+        ISupportChildren.Campaign memory campaign = supportChildren.getCampaign(
+            0
+        );
+        assertEq(campaign.receivedAmount, 100);
+        assertEq(balanceAfter, balanceBefore + 1);
+        assertEq(testToken.balanceOf(receiver), tokenBalanceBefore + 100);
+    }
+    function test_donateMintsOnlyOneNFTPerCampaign() external {
+        address caller = makeAddr("caller");
+        address receiver = makeAddr("beneficiary");
+        testToken.mint(caller, 200);
+
+        vm.startPrank(caller);
+        testToken.approve(address(supportChildren), 200);
+
+        uint256 balanceBefore = IERC721(supportChildren.nftReward()).balanceOf(
+            payable(caller)
+        );
+        supportChildren.createCampaign(
+            payable(receiver),
+            block.timestamp + 1 days,
+            "uri",
+            address(testToken),
+            200
+        );
+
+        supportChildren.donate(0, address(testToken), 100);
+        supportChildren.donate(0, address(testToken), 100);
+
+        vm.stopPrank();
+
+        uint256 balanceAfter = IERC721(supportChildren.nftReward()).balanceOf(
+            payable(caller)
+        );
+
+        ISupportChildren.Campaign memory campaign = supportChildren.getCampaign(
+            0
+        );
+        assertEq(campaign.receivedAmount, 200);
+        assertEq(balanceAfter, balanceBefore + 1);
+    }
+    function test_donateCampaignNotActive() external {
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__CampaignNotActive.selector
+        );
+        supportChildren.donate(0, makeAddr("tokenAddress"), 1);
+    }
+    function test_donateCampaignWantTokenIsEth() external {
+        supportChildren.createCampaign(
+            payable(address(this)),
+            block.timestamp + 1 days,
+            "uri",
+            address(0),
+            1
+        );
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__CampaignWantTokenIsETH.selector
+        );
+        supportChildren.donate(0, makeAddr("tokenAddress"), 1);
+    }
+    function test_donateCampaignTokenIsNotWantToken() external {
+        supportChildren.createCampaign(
+            payable(address(this)),
+            block.timestamp + 1 days,
+            "uri",
+            makeAddr("tokenAddress"),
+            1
+        );
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__TokenIsNotWantToken.selector
+        );
+        supportChildren.donate(0, makeAddr("tokenAddressWrong"), 1);
+    }
+    function test_CampaignCapIsReached() external {
+        supportChildren.createCampaign(
+            payable(makeAddr("beneficiary")),
+            block.timestamp + 1 days,
+            "uri",
+            makeAddr("tokenAddress"),
+            1
+        );
+        vm.expectRevert(
+            ISupportChildren.SupportChildren__CampaignCapIsReached.selector
+        );
+        supportChildren.donate(0, makeAddr("tokenAddress"), 10);
+    }
 }
