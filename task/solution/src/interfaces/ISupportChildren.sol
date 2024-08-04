@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
 interface ISupportChildren {
@@ -46,7 +47,7 @@ interface ISupportChildren {
         uint256 _hardCap
     ) external;
 
-    // @params _donorToken assumed not to be ETH or WETH, for that use donateETH()
+    // @params _donorToken assumed not to be ETH, for that use donateETH()
     function donate(
         uint256 _campaignId,
         address _donorToken,

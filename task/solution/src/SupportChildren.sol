@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
 
 import {ISupportChildren} from "./interfaces/ISupportChildren.sol";
@@ -5,17 +6,17 @@ import {IERC20} from "./interfaces/IERC20.sol";
 
 contract SupportChildren is ISupportChildren {
     uint256 index;
-    mapping(uint256 campaignId => Campaign) public campaigns;
+    mapping(uint256 campaignId => Campaign) campaigns;
 
     function isCampaignActive(
         uint256 _campaignId
-    ) public view override returns (bool) {
+    ) external view returns (bool) {
         return _isCampaignActive(_campaignId);
     }
 
     function getCampaign(
         uint256 _campaignId
-    ) public view override returns (Campaign memory) {
+    ) external view returns (Campaign memory) {
         return campaigns[_campaignId];
     }
 
