@@ -3,10 +3,18 @@ pragma solidity 0.8.26;
 
 import {ISupportChildren} from "./interfaces/ISupportChildren.sol";
 import {IERC20} from "./interfaces/IERC20.sol";
+import {IERC721} from "./interfaces/IERC721.sol";
+import {ERC721Token} from "./ERC721Token.sol";
 
 contract SupportChildren is ISupportChildren {
     uint256 index;
+    address nftReward;
     mapping(uint256 campaignId => Campaign) campaigns;
+    mapping(address receiver => mapping(uint256 campaignId => bool isNftRewardSent)) isNftRewardSent;
+
+    constructor() {
+        nftReward = address(new ERC721Token(address(this)));
+    }
 
     function isCampaignActive(
         uint256 _campaignId
@@ -65,7 +73,10 @@ contract SupportChildren is ISupportChildren {
 
         // Update the received amount, @research CEI pattern
         campaigns[_campaignId].receivedAmount += msg.value;
+        // Send reward NFT if not sent before
+        _sendRewardNFT(_campaignId, msg.sender);
 
+        // Send the ether to the beneficiary
         (bool sent /* bytes memory data */, ) = campaign.beneficiary.call{
             value: msg.value
         }("");
@@ -103,6 +114,8 @@ contract SupportChildren is ISupportChildren {
 
         // Update the received amount, @research CEI pattern
         campaigns[_campaignId].receivedAmount += _amount;
+        // Send reward NFT if not sent before
+        _sendRewardNFT(_campaignId, msg.sender);
 
         // @hint, you need to approve the contract before calling this function
         IERC20(_token).transferFrom(msg.sender, beneficiary, _amount); // @research why this is not good practice
@@ -131,6 +144,14 @@ contract SupportChildren is ISupportChildren {
         }
         if (_hardCap == 0) {
             revert SupportChildren__CapMustBeGreaterThanZero();
+        }
+    }
+
+    function _sendRewardNFT(uint256 campaignId, address _receiver) internal {
+        bool isRewardSent = isNftRewardSent[_receiver][campaignId];
+        if (!isRewardSent) {
+            isNftRewardSent[_receiver][campaignId] = true;
+            IERC721(nftReward).mint(_receiver);
         }
     }
 }
