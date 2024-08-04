@@ -89,37 +89,16 @@
   <summary><a href="#section-5-introduction-to-defi">Section 5: Introduction to DeFi</a></summary>
   <ol>
     <li><a href="#what-is-defi">What is DeFi?</a></li>
-    <li>
-      <a href="#dex-vs-cex">DEX vs CEX</a>
-      <ol>
-        <li><a href="#intro-to-amms">Intro to AMMs</a></li>
-        <li><a href="#uniswap">Uniswap</a></li>
-      </ol>
-    </li>
   </ol>
 </details>
 
 <details>
-  <summary><a href="#section-6-uniswap-v1-introduction">Section 6: Uniswap V1 Introduction</a></summary>
+  <summary><a href="#section-6-task">Section 6: Task</a></summary>
   <ol>
-    <li><a href="#what-is-erc20">What is ERC20?</a></li>
-    <li>
-      <a href="#coding-first-erc20">Coding first ERC20</a>
-      <ol>
-        <li><a href="#openzeppelin">OpenZeppelin</a></li>
-      </ol>
-    </li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#solutions">Solutions</a></li>
   </ol>
 </details>
-
-<details>
-  <summary><a href="#section-7-uniswapv1-exchange-contract">Section 7: UniswapV1 Exchange Contract</a></summary>
-</details>
-
-<details>
-  <summary><a href="#section-8-uniswapv1-factory-contract">Section 8: UniswapV1 Factory Contract</a></summary>
-</details>
-
 ## Disclaimer
 
 > ⚠️ All code associated with this course is for demo purposes only. They have not been audited and should not be considered production ready. Please use at your own risk.
@@ -184,15 +163,15 @@ Welcome to the Petnica Ethereum Workshop Edition 2024! In this workshop, we will
 - 📄 [Ethereum Whitepaper](https://ethereum.org/en/whitepaper/)
   - 👤 [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin)
 - 🌐 The world computer
-   - **Characteristics**:
-      - **Slow**
-      - **Expensive**
-      - **Not decisive** 
-      - **Global Singleton**(one computer for entire planet now and forever)
-      - **Unstoppable**
-      - **Natively multi-user**
-      - **Atomicity**
-  - [Ethereum: the World Computer]((https://www.youtube.com/watch?v=j23HnORQXvs))
+  - **Characteristics**:
+    - **Slow**
+    - **Expensive**
+    - **Not decisive**
+    - **Global Singleton**(one computer for entire planet now and forever)
+    - **Unstoppable**
+    - **Natively multi-user**
+    - **Atomicity**
+  - [Ethereum: the World Computer](<(https://www.youtube.com/watch?v=j23HnORQXvs)>)
   - ["Ethereum - The World's Computer" - Gavin Wood](https://www.youtube.com/watch?v=8OLAcUPHuW0)
 - 🖥️ [Transaction-Based State machine](https://ethereum.org/en/developers/docs/evm/)
 - 🔄 [Ethereum and Turing Completeness](https://mirror.xyz/skyf4ll.eth/l24iNVL6sZF7CYn-wgP1Un2tBhoBvSb3YKgW6IZPGt0)
@@ -227,7 +206,8 @@ Watch Finematics explain smart contracts: [Watch here](https://www.youtube.com/w
 
 # Section 2: Your first smart contract
 
-### 
+###
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
@@ -240,6 +220,7 @@ contract HelloWorld {
     }
 }
 ```
+
 [Open in Remix](https://remix.ethereum.org/?#code=Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IE1JVA0KcHJhZ21hIHNvbGlkaXR5IDAuOC4yNjsNCg0KY29udHJhY3QgSGVsbG9Xb3JsZCB7DQogICAgc3RyaW5nIHB1YmxpYyBncmVldCA9ICJIZWxsb1dvcmxkIjsNCg0KICAgIGZ1bmN0aW9uIHNldEdyZWV0KHN0cmluZyBjYWxsZGF0YSBuZXdHcmVldCkgZXh0ZXJuYWwgew0KICAgICAgICBncmVldCA9IG5ld0dyZWV0Ow0KICAgIH0NCn0&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.26+commit.8a97fa7a.js)
 
 ---
@@ -249,6 +230,7 @@ contract HelloWorld {
 - [Remix](http://remix.ethereum.org)
 
 ## Hello world
+
 - [Solidity in 100s](https://www.youtube.com/watch?v=kdvVwGrV7ec)
 - Versioning
 - Take notes in your code!
@@ -269,7 +251,8 @@ contract HelloWorld {
 
 # Section 3: Vending machine contract
 
-### 
+###
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
@@ -460,6 +443,7 @@ contract VendingMachine {
     }
 }
 ```
+
 [Open in Remix](https://remix.ethereum.org/?#code=Ly8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IE1JVA0KcHJhZ21hIHNvbGlkaXR5IDAuOC4yNjsNCg0KY29udHJhY3QgVmVuZGluZ01hY2hpbmUgew0KICAgIGVudW0gU3RhdHVzIHsNCiAgICAgICAgQUNUSVZFLA0KICAgICAgICBQQVVTRUQNCiAgICB9DQoNCiAgICBzdHJ1Y3QgSXRlbSB7DQogICAgICAgIHN0cmluZyBuYW1lOw0KICAgICAgICB1aW50MjU2IHN1cHBseTsNCiAgICAgICAgdWludDI1NiBwcmljZTsNCiAgICB9DQoNCiAgICB1aW50MjU2IGNvbnN0YW50IE1BWF9JVEVNUyA9IDUwOw0KICAgIGFkZHJlc3MgcHVibGljIGltbXV0YWJsZSBvd25lcjsNCg0KICAgIFN0YXR1cyBwdWJsaWMgc3RhdHVzOw0KDQogICAgdWludDI1NiBpbmRleDsNCg0KICAgIHVpbnQyNTYgdG90YWxCYWxhbmNlOw0KICAgIHVpbnQyNTYgdG90YWxJdGVtc1NvbGQ7DQoNCiAgICBtYXBwaW5nKHVpbnQyNTYgPT4gSXRlbSkgcHVibGljIGl0ZW1zOw0KDQogICAgLyovLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRVZFTlRTDQogICAgLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8qLw0KICAgIGV2ZW50IEl0ZW1BZGRlZCh1aW50MjU2IGl0ZW1JZCwgSXRlbSBpdGVtKTsNCiAgICBldmVudCBJdGVtUmVwbGFjZWQodWludDI1NiBpdGVtSWQsIEl0ZW0gaXRlbSk7DQogICAgZXZlbnQgU3RvY2tVcGRhdGVkKHVpbnQyNTYgaXRlbUlkLCB1aW50MjU2IHN1cHBseSk7DQogICAgZXZlbnQgUHJpY2VTZXQodWludDI1NiBpdGVtSWQsIHVpbnQyNTYgcHJpY2UpOw0KICAgIGV2ZW50IFBhdXNlZCgpOw0KICAgIGV2ZW50IFVucGF1c2VkKCk7DQogICAgZXZlbnQgSXRlbVB1cmNoYXNlZCh1aW50MjU2IGl0ZW1JZCwgdWludDI1NiBwcmljZSk7DQogICAgZXZlbnQgTW9uZXlXaXRoZHJhd24odWludDI1NiBhbW91bnQpOw0KICAgIC8qLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ1VTVE9NIEVSUk9SUw0KICAgIC8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vKi8NCiAgICBlcnJvciBWZW5kaW5nTWFjaGluZV9fVW5hdXRob3JpemVkKCk7DQogICAgZXJyb3IgVmVuZGluZ01hY2hpbmVfX01heEl0ZW1zUmVhY2hlZCgpOw0KICAgIGVycm9yIFZlbmRpbmdNYWNoaW5lX19JdGVtQWxyZWFkeUV4aXN0KCk7DQogICAgZXJyb3IgVmVuZGluZ01hY2hpbmVfX0l0ZW1Eb2VzTm90RXhpc3QoKTsNCiAgICBlcnJvciBWZW5kaW5nTWFjaGluZV9fUHJpY2VJc1plcm8oKTsNCiAgICBlcnJvciBWZW5kaW5nTWFjaGluZV9fU3VwcGx5SXNaZXJvKCk7DQogICAgZXJyb3IgVmVuZGluZ01hY2hpbmVfX1N1cHBseUlzTm90RW5vdWdoKCk7DQogICAgZXJyb3IgVmVuZGluZ01hY2hpbmVfX1ByaWNlSXNOb3RFbm91Z2goKTsNCiAgICBlcnJvciBWZW5kaW5nTWFjaGluZV9fTWFjaGluZUlzUGF1c2VkKCk7DQogICAgZXJyb3IgVmVuZGluZ01hY2hpbmVfX05vTW9uZXlUb1dpdGhkcmF3KCk7DQoNCiAgICAvKi8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTU9ESUZJRVJTDQogICAgLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8qLw0KICAgIG1vZGlmaWVyIG9ubHlPd25lcigpIHsNCiAgICAgICAgaWYgKG1zZy5zZW5kZXIgIT0gb3duZXIpIHsNCiAgICAgICAgICAgIHJldmVydCBWZW5kaW5nTWFjaGluZV9fVW5hdXRob3JpemVkKCk7DQogICAgICAgIH0NCiAgICAgICAgXzsNCiAgICB9DQoNCiAgICBjb25zdHJ1Y3RvcigpIHsNCiAgICAgICAgb3duZXIgPSBtc2cuc2VuZGVyOw0KICAgIH0NCiAgICAvKi8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vDQogICAgICAgICAgICAgICAgICAgICAgICAgICBFWFRFUk5BTCBGVU5DVElPTlMNCiAgICAvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLyovDQogICAgZnVuY3Rpb24gYWRkSXRlbShJdGVtIG1lbW9yeSBpdGVtKSBleHRlcm5hbCBvbmx5T3duZXIgew0KICAgICAgICB1aW50MjU2IGN1cnJlbnRJZCA9IGluZGV4Ow0KDQogICAgICAgIGlmIChjdXJyZW50SWQgPiBNQVhfSVRFTVMpIHsNCiAgICAgICAgICAgIHJldmVydCBWZW5kaW5nTWFjaGluZV9fTWF4SXRlbXNSZWFjaGVkKCk7DQogICAgICAgIH0NCg0KICAgICAgICBpdGVtc1tjdXJyZW50SWRdID0gaXRlbTsNCiAgICAgICAgaW5kZXggPSBjdXJyZW50SWQgKyAxOw0KDQogICAgICAgIGVtaXQgSXRlbUFkZGVkKGN1cnJlbnRJZCwgaXRlbSk7DQogICAgfQ0KDQogICAgZnVuY3Rpb24gcmVwbGFjZUl0ZW0odWludDI1NiBpdGVtSWQsIEl0ZW0gbWVtb3J5IGl0ZW0pIGV4dGVybmFsIG9ubHlPd25lciB7DQogICAgICAgIF92YWxpZGF0ZUlucHV0KGl0ZW1JZCwgaXRlbSk7DQoNCiAgICAgICAgaXRlbXNbaXRlbUlkXSA9IGl0ZW07DQoNCiAgICAgICAgZW1pdCBJdGVtUmVwbGFjZWQoaXRlbUlkLCBpdGVtKTsNCiAgICB9DQoNCiAgICBmdW5jdGlvbiB1cGRhdGVTdG9jayh1aW50MjU2IGl0ZW1JZCwgdWludDI1NiBzdXBwbHkpIGV4dGVybmFsIG9ubHlPd25lciB7DQogICAgICAgIGlmIChzdXBwbHkgPT0gMCkgew0KICAgICAgICAgICAgcmV2ZXJ0IFZlbmRpbmdNYWNoaW5lX19TdXBwbHlJc1plcm8oKTsNCiAgICAgICAgfQ0KICAgICAgICBpZiAoaXRlbXNbaXRlbUlkXS5wcmljZSA9PSAwKSB7DQogICAgICAgICAgICByZXZlcnQgVmVuZGluZ01hY2hpbmVfX0l0ZW1Eb2VzTm90RXhpc3QoKTsNCiAgICAgICAgfQ0KDQogICAgICAgIGl0ZW1zW2l0ZW1JZF0uc3VwcGx5ICs9IHN1cHBseTsNCg0KICAgICAgICBlbWl0IFN0b2NrVXBkYXRlZChpdGVtSWQsIHN1cHBseSk7DQogICAgfQ0KDQogICAgZnVuY3Rpb24gc2V0UHJpY2UodWludDI1NiBpdGVtSWQsIHVpbnQyNTYgcHJpY2UpIGV4dGVybmFsIG9ubHlPd25lciB7DQogICAgICAgIGlmIChwcmljZSA9PSAwKSB7DQogICAgICAgICAgICByZXZlcnQgVmVuZGluZ01hY2hpbmVfX1ByaWNlSXNaZXJvKCk7DQogICAgICAgIH0NCiAgICAgICAgaWYgKGl0ZW1zW2l0ZW1JZF0ucHJpY2UgPT0gMCkgew0KICAgICAgICAgICAgcmV2ZXJ0IFZlbmRpbmdNYWNoaW5lX19JdGVtRG9lc05vdEV4aXN0KCk7DQogICAgICAgIH0NCg0KICAgICAgICBpdGVtc1tpdGVtSWRdLnByaWNlID0gcHJpY2U7DQoNCiAgICAgICAgZW1pdCBQcmljZVNldChpdGVtSWQsIHByaWNlKTsNCiAgICB9DQoNCiAgICBmdW5jdGlvbiBwYXVzZSgpIGV4dGVybmFsIG9ubHlPd25lciB7DQogICAgICAgIHN0YXR1cyA9IFN0YXR1cy5QQVVTRUQ7DQoNCiAgICAgICAgZW1pdCBQYXVzZWQoKTsNCiAgICB9DQoNCiAgICBmdW5jdGlvbiB1bnBhdXNlKCkgZXh0ZXJuYWwgb25seU93bmVyIHsNCiAgICAgICAgc3RhdHVzID0gU3RhdHVzLkFDVElWRTsNCg0KICAgICAgICBlbWl0IFVucGF1c2VkKCk7DQogICAgfQ0KDQogICAgZnVuY3Rpb24gcHVyY2hhc2VJdGVtKHVpbnQyNTYgaXRlbUlkLCB1aW50MjU2IHF1YW50aXR5KSBleHRlcm5hbCBwYXlhYmxlIHsNCiAgICAgICAgLy8gRmlyc3QsIGxldCdzIGNoZWNrIGlmIG1hY2hpbmUgaXMgcGF1c2VkDQogICAgICAgIGlmIChzdGF0dXMgPT0gU3RhdHVzLlBBVVNFRCkgew0KICAgICAgICAgICAgcmV2ZXJ0IFZlbmRpbmdNYWNoaW5lX19NYWNoaW5lSXNQYXVzZWQoKTsNCiAgICAgICAgfQ0KICAgICAgICBJdGVtIG1lbW9yeSBpdGVtID0gaXRlbXNbaXRlbUlkXTsNCiAgICAgICAgLy8gU2Vjb25kLCBsZXQncyBjaGVjayBpZiBpdGVtIGV4aXN0DQogICAgICAgIGlmIChpdGVtLnByaWNlID09IDApIHsNCiAgICAgICAgICAgIHJldmVydCBWZW5kaW5nTWFjaGluZV9fSXRlbURvZXNOb3RFeGlzdCgpOw0KICAgICAgICB9DQogICAgICAgIC8vIFRoaXJkLCBsZXQncyBjaGVjayBpZiBwcmljZSBpcyBlbm91Z2gNCiAgICAgICAgaWYgKG1zZy52YWx1ZSA8IGl0ZW0ucHJpY2UgKiBxdWFudGl0eSkgew0KICAgICAgICAgICAgcmV2ZXJ0IFZlbmRpbmdNYWNoaW5lX19QcmljZUlzTm90RW5vdWdoKCk7DQogICAgICAgIH0NCiAgICAgICAgLy8gRm91cnRoLCBsZXQncyBjaGVjayBpZiB0aGVyZSBpcyBlbm91Z2ggc3RvY2sNCiAgICAgICAgaWYgKGl0ZW0uc3VwcGx5IDwgcXVhbnRpdHkpIHsNCiAgICAgICAgICAgIHJldmVydCBWZW5kaW5nTWFjaGluZV9fU3VwcGx5SXNOb3RFbm91Z2goKTsNCiAgICAgICAgfQ0KDQogICAgICAgIC8vIEZpZnRoLCBsZXQncyB0cmFuc2ZlciB0aGUgbW9uZXkNCiAgICAgICAgdG90YWxCYWxhbmNlICs9IGl0ZW1zW2l0ZW1JZF0ucHJpY2U7DQogICAgICAgIC8vIFNpeHRoLCBsZXQncyB1cGRhdGUgdGhlIHN0b2NrDQogICAgICAgIGl0ZW1zW2l0ZW1JZF0uc3VwcGx5IC09IHF1YW50aXR5Ow0KICAgICAgICAvLyBTZXZlbnRoLCBsZXQncyB1cGRhdGUgdGhlIHRvdGFsIGl0ZW1zIHNvbGQNCiAgICAgICAgdG90YWxJdGVtc1NvbGQgKz0gcXVhbnRpdHk7DQogICAgICAgIC8vIEVpZ2h0aCwgbGV0J3MgZW1pdCB0aGUgZXZlbnQNCiAgICAgICAgZW1pdCBJdGVtUHVyY2hhc2VkKGl0ZW1JZCwgaXRlbS5wcmljZSk7DQogICAgfQ0KDQogICAgZnVuY3Rpb24gd2l0aGRyYXdNb25leSgpIGV4dGVybmFsIG9ubHlPd25lciB7DQogICAgICAgIHVpbnQyNTYgdG90YWxUb1dpdGhkcmF3ID0gYWRkcmVzcyh0aGlzKS5iYWxhbmNlOw0KICAgICAgICBpZiAodG90YWxUb1dpdGhkcmF3ID09IDApIHsNCiAgICAgICAgICAgIHJldmVydCBWZW5kaW5nTWFjaGluZV9fTm9Nb25leVRvV2l0aGRyYXcoKTsNCiAgICAgICAgfQ0KDQogICAgICAgIChib29sIHNlbnQgLypieXRlcyBtZW1vcnkgZGF0YSovLCApID0gb3duZXIuY2FsbHsNCiAgICAgICAgICAgIHZhbHVlOiB0b3RhbFRvV2l0aGRyYXcNCiAgICAgICAgfSgiIik7DQogICAgICAgIGlmICghc2VudCkgew0KICAgICAgICAgICAgcmV2ZXJ0KCk7DQogICAgICAgIH0NCiAgICAgICAgZW1pdCBNb25leVdpdGhkcmF3bih0b3RhbFRvV2l0aGRyYXcpOw0KICAgIH0NCiAgICAvKi8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vDQogICAgICAgICAgICAgICAgICAgICAgICAgICBJTlRFUk5BTCBGVU5DVElPTlMNCiAgICAvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLyovDQogICAgZnVuY3Rpb24gX3ZhbGlkYXRlSW5wdXQodWludDI1NiBpdGVtSWQsIEl0ZW0gbWVtb3J5IGl0ZW0pIGludGVybmFsIHZpZXcgew0KICAgICAgICAvLyBWYWxpZGF0ZSBpZiBpdGVtIGFscmVhZHkgZXhpc3QNCiAgICAgICAgaWYgKGl0ZW1zW2l0ZW1JZF0ucHJpY2UgPT0gMCkgew0KICAgICAgICAgICAgcmV2ZXJ0IFZlbmRpbmdNYWNoaW5lX19JdGVtRG9lc05vdEV4aXN0KCk7DQogICAgICAgIH0NCiAgICAgICAgLy8gVmFsaWRhdGUgaWYgcHJpY2UgaXMgemVybw0KICAgICAgICBpZiAoaXRlbS5wcmljZSA9PSAwKSB7DQogICAgICAgICAgICByZXZlcnQgVmVuZGluZ01hY2hpbmVfX1ByaWNlSXNaZXJvKCk7DQogICAgICAgIH0NCiAgICAgICAgLy8gVmFsaWRhdGUgaWYgc3VwcGx5IGlzIHplcm8NCiAgICAgICAgaWYgKGl0ZW0uc3VwcGx5ID09IDApIHsNCiAgICAgICAgICAgIHJldmVydCBWZW5kaW5nTWFjaGluZV9fU3VwcGx5SXNaZXJvKCk7DQogICAgICAgIH0NCiAgICB9DQp9&lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.26+commit.8a97fa7a.js)
 
 ---
@@ -505,20 +489,20 @@ contract VendingMachine {
   - stack
 
 ## Basic Solidity: Modifiers
+
 - [Modifiers](https://docs.soliditylang.org/en/latest/contracts.html#function-modifiers)
 
-
-
 ## Basic Solidity: Error handling
+
 - [Errors](https://docs.soliditylang.org/en/latest/abi-spec.html#errors)
 - [`require`](https://docs.soliditylang.org/en/latest/control-structures.html#panic-via-assert-and-error-via-require)
 - `assert`
+
 ## Receiving ETH through a function
+
 - [Special functions](https://docs.soliditylang.org/en/latest/contracts.html#special-functions)
 - [`falback`](https://solidity-by-example.org/fallback/)
 - [`receive`](https://docs.soliditylang.org/en/latest/contracts.html#receive-ether-function)
-
-
 
 ## Sending ETH through a function
 
@@ -562,22 +546,15 @@ Gas matters :)
 
 ## What is DeFi?
 
-Watch finematic video..
+- Watch Finematics explain DeFi: [Watch here](https://www.youtube.com/watch?v=k9HYC0EJU6E)
+- Bojan presentation
 
-## DEX vs CEX
+# Section 6: Task
 
-- Intro to AMMs
-- Uniswap
+## Description
 
-# Section 6: Uniswap V1 introduction
+This section provides an overview of the tasks you need to complete. For a detailed description, please refer to the [TASK.md](./task/TASK.md) file.
 
-## What is ERC20?
-- What is EIP?
+## Solutions
 
-## Coding first ERC20
-
-- OpenZeppelin
-
-# Section 7: UniswapV1 Exchange contract
-
-# Section 8: UniswapV1 Factory contract
+The solution smart contracts for the tasks can be found in the [task/solution/src](task/solution/src) folder.
