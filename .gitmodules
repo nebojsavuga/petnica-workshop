@@ -1,6 +1,0 @@
-[submodule "task/solution/lib/solmate"]
-	path = task/solution/lib/solmate
-	url = https://github.com/transmissions11/solmate
-[submodule "task/solution/lib/openzeppelin-contracts"]
-	path = task/solution/lib/openzeppelin-contracts
-	url = https://github.com/OpenZeppelin/openzeppelin-contracts
