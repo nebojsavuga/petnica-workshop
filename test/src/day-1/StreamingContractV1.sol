@@ -4,7 +4,7 @@ import {IStreamingContractV1} from "./IStreamingContractV1.sol";
 
 contract StreamingContractV1 is IStreamingContractV1 {
     // Storage
-    uint256 id;
+    uint256 public id;
     mapping(uint256 id => Stream stream) streams;
 
     // Create a new ETH stream (totalAmount comes from msg.value)
