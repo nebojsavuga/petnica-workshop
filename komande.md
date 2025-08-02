@@ -15,3 +15,5 @@ forge test --mt test_getStream
 
 
 forge test --mp ..path
+
+$ forge install OpenZeppelin/openzeppelin-contracts

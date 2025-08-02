@@ -5,11 +5,21 @@ import {SafeERC20, IERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeE
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 using SafeERC20 for IERC20;
 
-contract StreamingContractV1 is IStreamingContractV1 {
+contract StreamingContractV1 is IStreamingContractV1, ERC721Enumerable {
     uint256 public id;
     mapping(uint256 id => Stream stream) streams;
 
-    // Create a new ETH stream (totalAmount comes from msg.value)
+    constructor() ERC721("StreamingContrac", "STRC") {
+        id = 0;
+    }
+    modifier onlyRecipient(uint256 streamId) {
+        require(
+            ownerOf(streamId) == msg.sender,
+            StreamContract__NotStreamRecipient()
+        );
+        _;
+    }
+
     function createStream(
         address recipient,
         uint256 startTime,
@@ -147,7 +157,7 @@ contract StreamingContractV1 is IStreamingContractV1 {
             tokenAddress: tokenAddress,
             canceled: false
         });
-
+        _mint(recipient, streamId);
         emit StreamCreated(
             streamId,
             msg.sender,
