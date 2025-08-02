@@ -43,6 +43,7 @@ contract StreamingContractV1 is IStreamingContractV1, ERC721Enumerable {
             tokenAddress: address(0),
             cancelled: false
         });
+        _safeMint(recipient, streamId);
 
         emit StreamCreated(
             streamId,
@@ -157,7 +158,7 @@ contract StreamingContractV1 is IStreamingContractV1, ERC721Enumerable {
             tokenAddress: tokenAddress,
             canceled: false
         });
-        _mint(recipient, streamId);
+        _safeMint(recipient, streamId);
         emit StreamCreated(
             streamId,
             msg.sender,
