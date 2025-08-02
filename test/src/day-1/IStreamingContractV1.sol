@@ -8,6 +8,8 @@ interface IStreamingContractV1 {
         uint256 endTime;
         uint256 totalAmount;
         uint256 withdrawnAmount;
+        uint256 tokenAddress;
+        bool canceled;
     }
 
     event StreamCreated(
@@ -28,13 +30,32 @@ interface IStreamingContractV1 {
     error ZeroToWithdraw();
     error MustStreamAmountGreaterThanZero();
 
-    event Withdrawal(uint256 indexed streamId, address indexed recipient, uint256 amount);
+    event Withdrawal(
+        uint256 indexed streamId,
+        address indexed recipient,
+        uint256 amount
+    );
+
+    event StreamCanceled(
+        uint256 indexed streamId,
+        uint256 recipientBalance,
+        uint256 senderBalance
+    );
 
     // Create a new ETH stream (totalAmount comes from msg.value)
-    function createStream(address recipient, uint256 startTime, uint256 endTime)
-        external
-        payable
-        returns (uint256 streamId);
+    function createStream(
+        address recipient,
+        uint256 startTime,
+        uint256 endTime
+    ) external payable returns (uint256 streamId);
+
+    function createTokenStream(
+        address recipient,
+        uint256 startTime,
+        uint256 endTime,
+        address tokenAddress,
+        uint256 totalAmount
+    ) external returns (uint256 streamId);
 
     // Withdraw available funds from a stream
     function withdrawFromStream(uint256 streamId) external;
@@ -43,5 +64,7 @@ interface IStreamingContractV1 {
     function getStream(uint256 streamId) external view returns (Stream memory);
 
     // Check withdrawable amount
-    function calculateWithdrawableAmount(uint256 streamId) external view returns (uint256);
+    function calculateWithdrawableAmount(
+        uint256 streamId
+    ) external view returns (uint256);
 }
